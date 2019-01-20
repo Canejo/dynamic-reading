@@ -1,0 +1,34 @@
+<div (click)="playOrPauseBody()">
+  <div class="row" [class.invisible]="reading()">
+    <div class="col text-center">
+        <h2>{{title}}</h2>
+    </div>
+  </div>
+</div>
+
+<p [class.invisible]="reading()" class="text-muted text-center">{{ timeToComplete | amDuration:'minutes' }} left</p>
+<div (click)="playOrPause()">
+  <p *ngIf="!isFinish()" class="text-center display-4" [innerHtml]="textInArray[indexWord]"></p>
+  <p *ngIf="isFinish()" class="text-center display-4">
+    Completed
+  </p>
+</div>
+<div (click)="playOrPauseBody()">
+  <div class="row pt-5" [class.invisible]="reading()">
+    <div class="col text-center">
+        <i class="fas fa-backward fa-lg p-3" (click)="_backward()" aria-hidden="true"></i>
+    </div>
+    <div class="col text-center">
+        <i class="fas fa-stop-circle fa-lg p-3" (click)="_stop()" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div [class.invisible]="reading()">
+    <hr class="mb-3">
+    <div class="row mt-2">
+      <div class="col text-center">
+          <h4><span>{{speedStart}}</span>&nbsp;<span class="text-muted ">WPM</span></h4>
+      </div>
+    </div>
+    <input type="range" class="custom-range" min="50" value="{{speedStart}}" max="1000" step="10" #ranger (input)="_setupSpeed(ranger.value)" />
+  </div>
+</div>
