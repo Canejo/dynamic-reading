@@ -1,7 +1,10 @@
-import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 
-import { ArticleEntity } from '../shared/entity/article.entity';
+import { IAppState } from './../../store/state/app.state';
+import { GetArticles } from './../../store/actions/article.actions';
+import { selectArticleList } from './../../store/selectors/article.selector';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -10,17 +13,20 @@ import { ArticleEntity } from '../shared/entity/article.entity';
 })
 export class ArticleListComponent implements OnInit {
 
-  articles: Observable<ArticleEntity[]>;
+  articles$ = this._store.pipe(select(selectArticleList));
 
-  constructor() { }
+  constructor(
+    private _store: Store<IAppState>,
+    private _router: Router
+  ) {
+  }
 
   ngOnInit() {
-    this.articles = of([{
-      id: 1,
-      title: 'Lorem ipsum',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum et velit sit amet pharetra. Aenean consectetur quam nisl, sed.',
-      index: 0
-    }]);
+    this._store.dispatch(new GetArticles());
+  }
+
+  navigateToArticle(id: number) {
+    this._router.navigate(['/article/read', id]);
   }
 
 }

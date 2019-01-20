@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { selectSelectedArticle } from './../../store/selectors/article.selector';
+import { IAppState } from './../../store/state/app.state';
+import { GetArticle } from 'src/app/store/actions/article.actions';
 
 @Component({
   selector: 'app-article-read',
@@ -7,12 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleReadComponent implements OnInit {
 
-  title = 'Lorem ipsum';
-  text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum et velit sit amet pharetra. Aenean consectetur quam nisl, sed.';
+  article$ = this._store.pipe(select(selectSelectedArticle));
 
-  constructor() { }
+  constructor(
+    private _store: Store<IAppState>,
+    private _route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this._store.dispatch(new GetArticle(this._route.snapshot.params.id));
   }
 
   start() {

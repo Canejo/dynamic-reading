@@ -1,6 +1,5 @@
 <app-read-runner
-  [title]="title"
-  [text]="text"
+  [article]="article$ | async"
   [speed]="300"
   (start)="start()"
   (pause)="pause($event)"
