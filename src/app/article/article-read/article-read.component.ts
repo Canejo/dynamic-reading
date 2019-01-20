@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleReadComponent implements OnInit {
 
-  title = 'Lotem ipsum';
+  title = 'Lorem ipsum';
   text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum et velit sit amet pharetra. Aenean consectetur quam nisl, sed.';
 
   constructor() { }
