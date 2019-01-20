@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Subscription, Observable, timer } from 'rxjs';
 import { scan, takeWhile, map } from 'rxjs/operators';
+import { ArticleTextService } from '../../service/article-text.service';
 
 @Component({
   selector: 'app-read-runner',
@@ -10,15 +11,8 @@ import { scan, takeWhile, map } from 'rxjs/operators';
 export class ReadRunnerComponent implements OnInit, OnDestroy {
 
   @Input() title: string;
-  @Input()
-  set text(value: string) {
-    this.textInArray = value.split(/\s+/).filter(n => n);
-  }
-
-  @Input()
-  set speed(value: number) {
-    this._setupSpeed(value);
-  }
+  @Input() text: string;
+  @Input() speed: number;
 
   @Output() start = new EventEmitter();
   @Output() pause = new EventEmitter<number>();
@@ -32,11 +26,14 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
   indexWord = 0;
   textInArray: Array<string>;
   speedStart = 300;
-  public timeToComplete = 0;
 
-  constructor() { }
+  constructor(
+    private _articleTextService: ArticleTextService
+  ) { }
 
   ngOnInit() {
+    this.textInArray = this._articleTextService.textToArray(this.text);
+    this._setupSpeed(this.speed);
   }
 
   ngOnDestroy() {
@@ -52,15 +49,10 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
   private _setupRunning() {
     this._running$ = timer(0, this._timePerWord)
       .pipe(scan((current, next) => this.indexWord++))
-      .pipe(map(() => this._calculateToFinish()))
       .pipe(map(() => {
         this._loading();
       }))
       .pipe(takeWhile(() => this.indexWord <= this.textInArray.length));
-  }
-
-  private _calculateToFinish() {
-    this.timeToComplete = 1 * (this.textInArray.length - this.indexWord) / this.speedStart;
   }
 
   private _start() {
@@ -93,7 +85,6 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
   _stop() {
     this._pause();
     this.indexWord = 0;
-    this._calculateToFinish();
 
     this.pause.emit(this.indexWord);
     this._loading();
@@ -103,7 +94,6 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
     this._pause();
     if (this.indexWord > 0) {
       this.indexWord--;
-      this._calculateToFinish();
     }
 
     this.pause.emit(this.indexWord);
@@ -123,7 +113,6 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
     this._pause();
     this.speedStart = value;
     this._timePerWord = 60000 / this.speedStart;
-    this._calculateToFinish();
     this._setupRunning();
   }
 
