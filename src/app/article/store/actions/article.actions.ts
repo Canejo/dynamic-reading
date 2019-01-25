@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-
-import { ArticleEntity } from './../../article/shared/entity/article.entity';
+import { ArticleEntity } from '../../shared/entity/article.entity';
 
 export enum EArticleActions {
   GetArticles = '[Article] Get Articles',

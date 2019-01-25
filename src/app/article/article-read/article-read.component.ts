@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import { selectSelectedArticle } from './../../store/selectors/article.selector';
-import { IAppState } from './../../store/state/app.state';
-import { GetArticle } from 'src/app/store/actions/article.actions';
+import { selectArticle } from '../store/selectors/article.selector';
+import { GetArticle } from '../store/actions/article.actions';
+import { IArticleState } from '../store/state/article.state';
 
 @Component({
   selector: 'app-article-read',
@@ -13,10 +13,10 @@ import { GetArticle } from 'src/app/store/actions/article.actions';
 })
 export class ArticleReadComponent implements OnInit {
 
-  article$ = this._store.pipe(select(selectSelectedArticle));
+  article$ = this._store.pipe(select(selectArticle));
 
   constructor(
-    private _store: Store<IAppState>,
+    private _store: Store<IArticleState>,
     private _route: ActivatedRoute
   ) { }
 

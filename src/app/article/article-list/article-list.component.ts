@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
-import { IAppState } from './../../store/state/app.state';
-import { GetArticles } from './../../store/actions/article.actions';
-import { selectArticleList } from './../../store/selectors/article.selector';
 import { Router } from '@angular/router';
+import { selectArticleList } from '../store/selectors/article.selector';
+import { GetArticles } from '../store/actions/article.actions';
+import { IArticleState } from '../store/state/article.state';
 
 @Component({
   selector: 'app-article-list',
@@ -16,7 +16,7 @@ export class ArticleListComponent implements OnInit {
   articles$ = this._store.pipe(select(selectArticleList));
 
   constructor(
-    private _store: Store<IAppState>,
+    private _store: Store<IArticleState>,
     private _router: Router
   ) {
   }
