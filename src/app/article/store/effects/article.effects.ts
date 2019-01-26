@@ -28,7 +28,6 @@ export class ArticleEffects {
 
   constructor(
     private _articleService: ArticleService,
-    private _actions$: Actions,
-    private _store: Store<IArticleState>
+    private _actions$: Actions
   ) {}
 }
