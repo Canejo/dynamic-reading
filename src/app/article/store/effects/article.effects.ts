@@ -37,17 +37,22 @@ export class ArticleEffects {
   @Effect()
   getArticles$ = this._actions$.pipe(
     ofType<GetArticles>(EArticleActions.GetArticles),
-    withLatestFrom(
-      this._store.select(selectArticleList),
-      (action: any, store: any) => store
-    ),
-    switchMap((articles): any => {
-      if (articles) {
-        return of(articles);
-      }
-      return this._articleService.getArticles();
-     }),
-    // switchMap(() => this._articleService.getArticles()),
+    // withLatestFrom(
+    //   this._store.select(selectArticleList),
+    //   (action: any, store: any) => {
+    //     return {
+    //       filter: action.payload,
+    //       articles: store
+    //     };
+    // }),
+    // switchMap((request): any => {
+    //   if (request.articles) {
+    //     return of(request.articles);
+    //   }
+    //   return this._articleService.getArticles(request.filter);
+    //  }),
+    map(action => action.payload),
+    switchMap((filter) => this._articleService.getArticles(filter)),
     switchMap((articles: ArticleEntity[]) => of(new GetArticlesSuccess(articles)))
   );
 

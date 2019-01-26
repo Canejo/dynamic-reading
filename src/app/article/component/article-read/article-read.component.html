@@ -1,18 +1,18 @@
 <div class="container-fluid" *ngIf="article && config">
-  <div class="row p-3 border text-secondary">
+  <div class="row p-3 border">
     <div class="col">
-      <a href="javascript:void(0)" (click)="OnBack()"><i class="fas fa-arrow-left fa-lg mr-4"></i></a>
-      <a href="javascript:void(0)" (click)="OnArchive()"><i class="fas fa-check fa-lg mr-4"></i></a>
-      <a href="javascript:void(0)" (click)="OnRemove()"><i class="fas fa-trash fa-lg mr-4"></i></a>
-      <a href="javascript:void(0)" (click)="OnTag()"><i class="fas fa-tag fa-lg mr-4"></i></a>
-      <a href="javascript:void(0)" (click)="OnFavorite()"><i class="fas fa-star fa-lg mr-4"></i></a>
+      <a href="javascript:void(0)" (click)="OnBack()"><i placement="bottom" ngbTooltip="Voltar" class="fas fa-arrow-left fa-lg mr-4 text-muted"></i></a>
+      <a href="javascript:void(0)" (click)="OnArchive()"><i placement="bottom" ngbTooltip="Arquivar" class="fas fa-check fa-lg mr-4 text-muted"></i></a>
+      <a href="javascript:void(0)" (click)="OnRemove()"><i placement="bottom" ngbTooltip="Excluir" class="fas fa-trash fa-lg mr-4 text-muted"></i></a>
+      <a href="javascript:void(0)" (click)="OnTag()"><i placement="bottom" ngbTooltip="Editar tags" class="fas fa-tag fa-lg mr-4 text-muted"></i></a>
+      <a href="javascript:void(0)" (click)="OnFavorite()"><i placement="bottom" ngbTooltip="Favorito" class="fas fa-star fa-lg mr-4" [class.text-muted]="!article.favorite" [class.text-warning]="article.favorite"></i></a>
     </div>
     <div class="col text-center font-weight-bold">
       {{article.title}}
     </div>
     <div class="col text-right">
-        <i class="fas fa-share fa-lg mr-4"></i>
-        <i class="fas fa-font fa-lg mr-4"></i>
+        <i placement="bottom" ngbTooltip="Compartilhe" class="fas fa-share fa-lg mr-4"></i>
+        <i placement="bottom" ngbTooltip="Opções de exbição" class="fas fa-font fa-lg mr-4"></i>
     </div>
   </div>
   <div class="container mt-5">

@@ -7,6 +7,8 @@ export class ArticleEntity {
   url: string;
   text: string;
   index: number;
+  favorite: boolean;
+  archive: boolean;
   source: SourceEntity;
   tags: TagEntity[];
 }

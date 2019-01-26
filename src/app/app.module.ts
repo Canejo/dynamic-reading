@@ -8,12 +8,14 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from './../environments/environment.prod';
 import { appReducers } from './store/reducers/app.reducers';
 import { ConfigEffects } from './core/store/effects/config.effects';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { ConfigEffects } from './core/store/effects/config.effects';
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
       preventDuplicates: true
-    })
+    }),
+    NgbModule.forRoot(),
+    LayoutModule
   ],
   declarations: [
     AppComponent

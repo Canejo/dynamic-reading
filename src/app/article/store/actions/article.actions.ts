@@ -12,6 +12,7 @@ export enum EArticleActions {
 
 export class GetArticles implements Action {
   public readonly type = EArticleActions.GetArticles;
+  constructor(public payload?: ArticleEntity) {}
 }
 
 export class GetArticlesSuccess implements Action {

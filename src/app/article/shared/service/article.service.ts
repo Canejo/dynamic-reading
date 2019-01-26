@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { ArticleEntity } from '../entity/article.entity';
@@ -13,9 +13,17 @@ export class ArticleService {
     private _http: HttpClient
   ) { }
 
-  getArticles(): Observable<ArticleEntity[]> {
+  getArticles(filter: ArticleEntity): Observable<ArticleEntity[]> {
+    let params = new HttpParams();
+    if (filter) {
+      for (const i in filter) {
+        if (i) {
+          params = params.append(i, filter[i]);
+        }
+      }
+    }
 
-    return this._http.get<ArticleEntity[]>(`${environment.apiUrl}/articles`);
+    return this._http.get<ArticleEntity[]>(`${environment.apiUrl}/articles`, {params: params});
   }
 
   getArticle(id: number): Observable<ArticleEntity> {

@@ -1,2 +1,6 @@
 <h1>Favoritos</h1>
-
+<app-article-list
+  [articles]="articles$ | async"
+  [config]="config$ | async"
+  (navigateToArticle)="navigateToArticle($event)">
+</app-article-list>

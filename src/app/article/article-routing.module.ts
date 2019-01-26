@@ -12,7 +12,8 @@ const routes: Routes = [
     path: '',
     component: ArticleContainerComponent,
     children: [
-        { path: '', component: ArticleListContainerComponent },
+        { path: '', redirectTo: 'list', pathMatch: 'full' },
+        { path: 'list', component: ArticleListContainerComponent },
         { path: 'favorites', component: ArticleFavoriteContainerComponent },
         { path: 'archive', component: ArticleArchiveContainerComponent },
     ]

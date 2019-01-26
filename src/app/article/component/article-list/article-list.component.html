@@ -1,5 +1,5 @@
 
-<div *ngIf="articles && config">
+<div *ngIf="articles && config" class="mt-3">
   <div class="card w-100" *ngFor="let article of articles" (click)="navigateToArticle.emit(article)">
     <div class="card-body">
       <div class="row">
@@ -7,7 +7,7 @@
           <img src="https://dummyimage.com/100x80/000/fff" class="card-img-top" alt="...">
         </div>
         <div class="col">
-          <h5 class="card-title">{{article.title}}</h5>
+          <h5 class="card-title">{{article.title}} <i *ngIf="article.favorite" class="fas fa-star text-warning"></i></h5>
           <div class="row">
             <div class="col-auto">
               {{article.source.name}}

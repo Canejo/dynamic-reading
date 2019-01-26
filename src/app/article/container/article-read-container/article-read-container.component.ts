@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {Location} from '@angular/common';
 
 import { selectArticle } from '../../store/selectors/article.selector';
 import { IArticleState } from '../../store/state/article.state';
@@ -27,7 +28,8 @@ export class ArticleReadContainerComponent implements OnInit {
     private _storeApp: Store<IAppState>,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -46,7 +48,7 @@ export class ArticleReadContainerComponent implements OnInit {
   }
 
   back() {
-    this._router.navigate(['/article']);
+    this._location.back();
   }
 
   archive() {

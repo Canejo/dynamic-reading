@@ -1,7 +1,9 @@
+import { LayoutModule } from './../layout/layout.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ReadRunnerComponent } from './shared/widget/read-runner/read-runner.component';
 import { ArticleRoutingModule } from './article-routing.module';
@@ -22,7 +24,9 @@ import { ArticleArchiveContainerComponent } from './container/article-archive-co
     CommonModule,
     ArticleRoutingModule,
     StoreModule.forFeature('article', articleReducers),
-    EffectsModule.forFeature([ArticleEffects])
+    EffectsModule.forFeature([ArticleEffects]),
+    NgbModule,
+    LayoutModule
   ],
   declarations: [
     ReadRunnerComponent,
