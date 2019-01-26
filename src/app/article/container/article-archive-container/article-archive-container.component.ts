@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { IArticleState } from '../../store/state/article.state';
 import { ArticleEntity } from '../../shared/entity/article.entity';
 import { IAppState } from '../../../store/state/app.state';
-import { ArticleBaseContainerComponent } from '../article-base-container/article-base-container.component';
+import { ArticleListBaseContainerComponent } from '../article-list-base-container/article-list-base-container.component';
 
 @Component({
   selector: 'app-article-archive-container',
   templateUrl: './article-archive-container.component.html',
   styleUrls: ['./article-archive-container.component.scss']
 })
-export class ArticleArchiveContainerComponent extends ArticleBaseContainerComponent {
+export class ArticleArchiveContainerComponent extends ArticleListBaseContainerComponent {
 
   constructor(
     storeArticle: Store<IArticleState>,

@@ -1,0 +1,6 @@
+<ng-container *ngIf="article">
+  <a href="javascript:void(0)" (click)="archive.emit(article)"><i placement="bottom" [ngbTooltip]="article.archive ? 'Adicionar a lista' :'Arquivar'" [class.fa-plus]="article.archive" [class.fa-check]="!article.archive" class="fas fa-lg mr-4 text-muted"></i></a>
+  <a href="javascript:void(0)" (click)="remove.emit(article)"><i placement="bottom" ngbTooltip="Excluir" class="fas fa-trash fa-lg mr-4 text-muted"></i></a>
+  <a href="javascript:void(0)" (click)="tag.emit(article)"><i placement="bottom" ngbTooltip="Editar tags" class="fas fa-tag fa-lg mr-4 text-muted"></i></a>
+  <a href="javascript:void(0)" (click)="favorite.emit(article)"><i placement="bottom" ngbTooltip="Favorito" class="fas fa-star fa-lg mr-4" [class.text-muted]="!article.favorite" [class.text-warning]="article.favorite"></i></a>
+</ng-container>

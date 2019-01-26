@@ -2,10 +2,13 @@
   <div class="row p-3 border">
     <div class="col">
       <a href="javascript:void(0)" (click)="OnBack()"><i placement="bottom" ngbTooltip="Voltar" class="fas fa-arrow-left fa-lg mr-4 text-muted"></i></a>
-      <a href="javascript:void(0)" (click)="OnArchive()"><i placement="bottom" ngbTooltip="Arquivar" class="fas fa-check fa-lg mr-4 text-muted"></i></a>
-      <a href="javascript:void(0)" (click)="OnRemove()"><i placement="bottom" ngbTooltip="Excluir" class="fas fa-trash fa-lg mr-4 text-muted"></i></a>
-      <a href="javascript:void(0)" (click)="OnTag()"><i placement="bottom" ngbTooltip="Editar tags" class="fas fa-tag fa-lg mr-4 text-muted"></i></a>
-      <a href="javascript:void(0)" (click)="OnFavorite()"><i placement="bottom" ngbTooltip="Favorito" class="fas fa-star fa-lg mr-4" [class.text-muted]="!article.favorite" [class.text-warning]="article.favorite"></i></a>
+      <app-article-options
+        [article]="article"
+        (archive)="archive.emit($event)"
+        (remove)="remove.emit($event)"
+        (tag)="tag.emit($event)"
+        (favorite)="favorite.emit($event)">
+      </app-article-options>
     </div>
     <div class="col text-center font-weight-bold">
       {{article.title}}

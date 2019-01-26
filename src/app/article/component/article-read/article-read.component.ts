@@ -17,11 +17,13 @@ export class ArticleReadComponent implements OnInit {
   @Output() finish = new EventEmitter();
   @Output() loading = new EventEmitter();
   @Output() changeSpeed = new EventEmitter<number>();
-  @Output() back = new EventEmitter<number>();
-  @Output() archive = new EventEmitter<number>();
-  @Output() remove = new EventEmitter<number>();
-  @Output() tag = new EventEmitter<number>();
-  @Output() favorite = new EventEmitter<number>();
+
+  @Output() back = new EventEmitter();
+
+  @Output() archive = new EventEmitter<ArticleEntity>();
+  @Output() remove = new EventEmitter<ArticleEntity>();
+  @Output() tag = new EventEmitter<ArticleEntity>();
+  @Output() favorite = new EventEmitter<ArticleEntity>();
 
   constructor(
   ) { }

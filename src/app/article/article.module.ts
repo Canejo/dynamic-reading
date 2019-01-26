@@ -18,6 +18,7 @@ import { ArticleReadComponent } from './component/article-read/article-read.comp
 import { ArticleContainerComponent } from './container/article-container/article-container.component';
 import { ArticleFavoriteContainerComponent } from './container/article-favorite-container/article-favorite-container.component';
 import { ArticleArchiveContainerComponent } from './container/article-archive-container/article-archive-container.component';
+import { ArticleOptionsComponent } from './component/article-options/article-options.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { ArticleArchiveContainerComponent } from './container/article-archive-co
     ArticleReadContainerComponent,
     ArticleContainerComponent,
     ArticleFavoriteContainerComponent,
-    ArticleArchiveContainerComponent
+    ArticleArchiveContainerComponent,
+    ArticleOptionsComponent
   ],
   exports: [
   ],
