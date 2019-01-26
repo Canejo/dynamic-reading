@@ -1,4 +1,4 @@
-<div *ngFor="let a of articles$ | async" (click)="navigateToArticle(a.id)">
+<div *ngFor="let a of articles" (click)="navigateToArticle.emit(a)">
   {{a.title}}
   <span class="text-muted text-center">{{ a.text | timeToComplete :a.index:300 }} left</span>
 </div>

@@ -1,11 +1,12 @@
-import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleReadComponent } from './article-read/article-read.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { ArticleListContainerComponent } from './container/article-list-container/article-list-container.component';
+import { ArticleReadContainerComponent } from './container/article-read-container/article-read-container.component';
+
 const routes: Routes = [
-  { path: '', component: ArticleListComponent },
-  { path: 'read/:id', component: ArticleReadComponent }
+  { path: '', component: ArticleListContainerComponent },
+  { path: 'read/:id', component: ArticleReadContainerComponent }
 ];
 
 @NgModule({

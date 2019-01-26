@@ -4,13 +4,15 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { ReadRunnerComponent } from './shared/widget/read-runner/read-runner.component';
-import { ArticleReadComponent } from './article-read/article-read.component';
 import { ArticleRoutingModule } from './article-routing.module';
 import { TimeToCompletePipe } from './shared/pipe/time-to-complete.pipe';
 import { ArticleTextService } from './shared/service/article-text.service';
-import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleEffects } from './store/effects/article.effects';
 import { articleReducers } from './store/reducers/article.reducers';
+import { ArticleListComponent } from './component/article-list/article-list.component';
+import { ArticleListContainerComponent } from './container/article-list-container/article-list-container.component';
+import { ArticleReadContainerComponent } from './container/article-read-container/article-read-container.component';
+import { ArticleReadComponent } from './component/article-read/article-read.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { articleReducers } from './store/reducers/article.reducers';
     ReadRunnerComponent,
     ArticleReadComponent,
     TimeToCompletePipe,
-    ArticleListComponent
+    ArticleListComponent,
+    ArticleListContainerComponent,
+    ArticleReadContainerComponent
   ],
   exports: [
   ],
