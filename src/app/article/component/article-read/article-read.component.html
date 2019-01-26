@@ -1,0 +1,8 @@
+<app-read-runner
+  [article]="article"
+  [speed]="speed"
+  (start)="start.emit()"
+  (pause)="pause.emit($event)"
+  (finish)="pause.emit()"
+  (loading)="loading.emit()"
+></app-read-runner>

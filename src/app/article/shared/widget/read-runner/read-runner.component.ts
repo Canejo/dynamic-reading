@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { ArticleEntity } from './../../entity/article.entity';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, OnChanges } from '@angular/core';
 import { Subscription, Observable, timer } from 'rxjs';
 import { scan, takeWhile, map } from 'rxjs/operators';
 import { ArticleTextService } from '../../service/article-text.service';
@@ -8,10 +9,9 @@ import { ArticleTextService } from '../../service/article-text.service';
   templateUrl: './read-runner.component.html',
   styleUrls: ['./read-runner.component.scss']
 })
-export class ReadRunnerComponent implements OnInit, OnDestroy {
+export class ReadRunnerComponent implements OnInit, OnDestroy, OnChanges {
 
-  @Input() title: string;
-  @Input() text: string;
+  @Input() article: ArticleEntity;
   @Input() speed: number;
 
   @Output() start = new EventEmitter();
@@ -32,8 +32,14 @@ export class ReadRunnerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.textInArray = this._articleTextService.textToArray(this.text);
-    this._setupSpeed(this.speed);
+
+  }
+
+  ngOnChanges() {
+    if (this.article) {
+      this.textInArray = this._articleTextService.textToArray(this.article.text);
+      this._setupSpeed(this.speed);
+    }
   }
 
   ngOnDestroy() {
