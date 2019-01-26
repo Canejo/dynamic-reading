@@ -6,11 +6,14 @@ import { MomentModule } from 'ngx-moment';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from './../environments/environment.prod';
 import { appReducers } from './store/reducers/app.reducers';
+import { ConfigEffects } from './core/store/effects/config.effects';
 
 @NgModule({
   imports: [
@@ -19,9 +22,14 @@ import { appReducers } from './store/reducers/app.reducers';
     MomentModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ConfigEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true
+    })
   ],
   declarations: [
     AppComponent

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ArticleEntity } from '../../shared/entity/article.entity';
+import { ConfigEntity } from '../../../core/shared/entity/config.entity';
 
 @Component({
   selector: 'app-article-list',
@@ -9,7 +10,9 @@ import { ArticleEntity } from '../../shared/entity/article.entity';
 export class ArticleListComponent implements OnInit {
 
   @Input() articles: ArticleEntity[];
+  @Input() config: ConfigEntity;
   @Output() navigateToArticle: EventEmitter<ArticleEntity> = new EventEmitter();
+
 
   constructor() { }
 

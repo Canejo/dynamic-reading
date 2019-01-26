@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { ArticleEntity } from '../entity/article.entity';
-import { select } from '@ngrx/store';
-import { map, filter } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +14,16 @@ export class ArticleService {
   ) { }
 
   getArticles(): Observable<ArticleEntity[]> {
-    return this._http.get<ArticleEntity[]>('http://localhost:3000/articles');
+
+    return this._http.get<ArticleEntity[]>(`${environment.apiUrl}/articles`);
   }
 
   getArticle(id: number): Observable<ArticleEntity> {
-    return this._http.get<ArticleEntity>(`http://localhost:3000/articles/${id}`);
+    return this._http.get<ArticleEntity>(`${environment.apiUrl}/articles/${id}`);
+  }
+
+  postArticle(articleEntity: ArticleEntity): Observable<ArticleEntity> {
+    console.log('a');
+    return this._http.post<ArticleEntity>(`${environment.apiUrl}/articles/${articleEntity.id}`, articleEntity);
   }
 }

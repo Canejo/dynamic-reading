@@ -1,4 +1,27 @@
-<div *ngFor="let a of articles" (click)="navigateToArticle.emit(a)">
-  {{a.title}}
-  <span class="text-muted text-center">{{ a.text | timeToComplete :a.index:300 }} left</span>
+
+<div *ngIf="articles && config">
+  <div class="card w-100" *ngFor="let article of articles" (click)="navigateToArticle.emit(article)">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-auto no-gutters">
+          <img src="https://dummyimage.com/100x80/000/fff" class="card-img-top" alt="...">
+        </div>
+        <div class="col">
+          <h5 class="card-title">{{article.title}}</h5>
+          <div class="row">
+            <div class="col-auto">
+              {{article.source.name}}
+            </div>
+            <div class="col">
+              <span *ngFor="let tag of article.tags" class="badge badge-secondary ml-1">{{tag.name}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto text-center">
+          <i class="fas fa-clock fa-2x"></i>
+          <p class="text-muted">{{ article.text | timeToComplete :article.index: config.speedRead }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -18,6 +18,7 @@ export class ReadRunnerComponent implements OnInit, OnDestroy, OnChanges {
   @Output() pause = new EventEmitter<number>();
   @Output() finish = new EventEmitter();
   @Output() loading = new EventEmitter();
+  @Output() changeSpeed = new EventEmitter<number>();
 
   private _running$: Observable<void>;
   private _running: Subscription;
@@ -120,6 +121,7 @@ export class ReadRunnerComponent implements OnInit, OnDestroy, OnChanges {
     this.speedStart = value;
     this._timePerWord = 60000 / this.speedStart;
     this._setupRunning();
+    this.changeSpeed.emit(this.speedStart);
   }
 
   playOrPauseBody() {

@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { selectArticle } from '../../store/selectors/article.selector';
 import { IArticleState } from '../../store/state/article.state';
-import { ActivatedRoute } from '@angular/router';
-import { GetArticle } from '../../store/actions/article.actions';
+import { GetArticle, PostArticle } from '../../store/actions/article.actions';
+import { IAppState } from './../../../store/state/app.state';
+import { selectConfig } from './../../../core/store/selectors/config.selector';
+import { GetConfig, PostConfig } from './../../../core/store/actions/config.actions';
+import { ConfigEntity } from '../../../core/shared/entity/config.entity';
+import { ArticleEntity } from './../../shared/entity/article.entity';
 
 @Component({
   selector: 'app-article-read-container',
@@ -12,24 +19,42 @@ import { GetArticle } from '../../store/actions/article.actions';
 })
 export class ArticleReadContainerComponent implements OnInit {
 
-  article$ = this._store.pipe(select(selectArticle));
+  article$ = this._storeArticle.pipe(select(selectArticle));
+  config$ = this._storeApp.pipe(select(selectConfig));
 
   constructor(
-    private _store: Store<IArticleState>,
-    private _route: ActivatedRoute
+    private _storeArticle: Store<IArticleState>,
+    private _storeApp: Store<IAppState>,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    this._store.dispatch(new GetArticle(this._route.snapshot.params.id));
+    this._storeArticle.dispatch(new GetArticle(this._route.snapshot.params.id));
+    this._storeApp.dispatch(new GetConfig());
   }
 
-  start() {
+  pause(article: ArticleEntity) {
+    this._storeApp.dispatch(new PostArticle(article));
   }
 
-  pause(indexWord: number) {
+  changeSpeed(speed: number) {
+    const configEntity = new ConfigEntity();
+    configEntity.speedRead = speed;
+    this._storeApp.dispatch(new PostConfig(configEntity));
   }
 
-  finish() {
+  back() {
+    this._router.navigate(['/article']);
   }
 
+  archive() {
+    this._toastr.success('Item arquivado');
+    this.back();
+  }
+
+  favorite() {
+
+  }
 }

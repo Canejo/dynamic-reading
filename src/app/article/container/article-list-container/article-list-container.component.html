@@ -1,2 +1,6 @@
-<app-article-list  [articles]="articles$ | async"
-(navigateToArticle)="navigateToArticle($event)"></app-article-list>
+<h1>Minha lista</h1>
+<app-article-list
+  [articles]="articles$ | async"
+  [config]="config$ | async"
+  (navigateToArticle)="navigateToArticle($event)">
+</app-article-list>

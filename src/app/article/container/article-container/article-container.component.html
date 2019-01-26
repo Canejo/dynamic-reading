@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <nav class="nav flex-column">
+        <a class="nav-link" routerLinkActive="active" routerLink="/article">Minha lista</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/article/favorites">Favoritos</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/article/archive">Arquivo</a>
+      </nav>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

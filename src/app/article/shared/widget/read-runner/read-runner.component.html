@@ -1,14 +1,24 @@
+
 <div *ngIf="article && textInArray">
-  <div (click)="playOrPauseBody()">
-    <div class="row" [class.invisible]="reading()">
-      <div class="col text-center">
-          <h2>{{article.title}}</h2>
+  <div (click)="playOrPauseBody()" [class.invisible]="reading()">
+    <div class="row">
+      <div class="col">
+          <h1>{{article.title}}</h1>
+      </div>
+    </div>
+    <p class="text-muted text-center">{{ article.text | timeToComplete :indexWord:speedStart }} left</p>
+    <div class="row">
+      <div class="col">
+        {{article.source.name}}
+      </div>
+      <div class="col text-right">
+        <a [href]="article.url" target="_blank">Exibir original</a>
+        <div>
+            <span *ngFor="let tag of article.tags" class="badge badge-secondary ml-1">{{tag.name}}</span>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- <p [class.invisible]="reading()" class="text-muted text-center">{{ timeToComplete | amDuration:'minutes' }} left</p> -->
-  <p [class.invisible]="reading()" class="text-muted text-center">{{ article.text | timeToComplete :indexWord:speedStart }} left</p>
   <div (click)="playOrPause()">
     <p *ngIf="!isFinish()" class="text-center display-4" [innerHtml]="textInArray[indexWord]"></p>
     <p *ngIf="isFinish()" class="text-center display-4">

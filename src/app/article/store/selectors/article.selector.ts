@@ -14,3 +14,8 @@ export const selectArticle = createSelector(
   selectArticles,
   (state: IArticleState) => state.selectedArticle
 );
+
+export const updateArticle = createSelector(
+  selectArticles,
+  (state: IArticleState) => state.selectedArticle
+);

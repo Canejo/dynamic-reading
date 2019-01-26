@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 
-import { GetArticle, EArticleActions, GetArticleSuccess, GetArticles, GetArticlesSuccess } from '../actions/article.actions';
+import { GetArticle, EArticleActions, GetArticleSuccess, GetArticles, GetArticlesSuccess, PostArticle, PostArticleSuccess } from '../actions/article.actions';
 import { ArticleEntity } from '../../shared/entity/article.entity';
 import { ArticleService } from '../../shared/service/article.service';
 import { selectArticle, selectArticleList } from '../selectors/article.selector';
@@ -49,6 +49,14 @@ export class ArticleEffects {
      }),
     // switchMap(() => this._articleService.getArticles()),
     switchMap((articles: ArticleEntity[]) => of(new GetArticlesSuccess(articles)))
+  );
+
+  @Effect()
+  postArticle$ = this._actions$.pipe(
+    ofType<PostArticle>(EArticleActions.PostArticle),
+    map(action => action.payload),
+    switchMap((articleEntity) => this._articleService.postArticle(articleEntity)),
+    switchMap((article: ArticleEntity) => of(new PostArticleSuccess(article)))
   );
 
   constructor(

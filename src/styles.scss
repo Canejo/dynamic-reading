@@ -1,2 +1,15 @@
+
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap";
+@import '~ngx-toastr/toastr.css';
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

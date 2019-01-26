@@ -13,13 +13,16 @@ import { ArticleListComponent } from './component/article-list/article-list.comp
 import { ArticleListContainerComponent } from './container/article-list-container/article-list-container.component';
 import { ArticleReadContainerComponent } from './container/article-read-container/article-read-container.component';
 import { ArticleReadComponent } from './component/article-read/article-read.component';
+import { ArticleContainerComponent } from './container/article-container/article-container.component';
+import { ArticleFavoriteContainerComponent } from './container/article-favorite-container/article-favorite-container.component';
+import { ArticleArchiveContainerComponent } from './container/article-archive-container/article-archive-container.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ArticleRoutingModule,
     StoreModule.forFeature('article', articleReducers),
-    EffectsModule.forFeature([ArticleEffects]),
+    EffectsModule.forFeature([ArticleEffects])
   ],
   declarations: [
     ReadRunnerComponent,
@@ -27,7 +30,10 @@ import { ArticleReadComponent } from './component/article-read/article-read.comp
     TimeToCompletePipe,
     ArticleListComponent,
     ArticleListContainerComponent,
-    ArticleReadContainerComponent
+    ArticleReadContainerComponent,
+    ArticleContainerComponent,
+    ArticleFavoriteContainerComponent,
+    ArticleArchiveContainerComponent
   ],
   exports: [
   ],

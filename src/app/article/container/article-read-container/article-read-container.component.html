@@ -1,7 +1,9 @@
 <app-article-read
   [article]="article$ | async"
-  [speed]="300"
-  (start)="start()"
+  [config]="config$ | async"
   (pause)="pause($event)"
-  (finish)="finish()"
+  (changeSpeed)="changeSpeed($event)"
+  (back)="back()"
+  (archive)="archive()"
+  (favorite)="favorite()"
 ></app-article-read>

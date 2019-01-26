@@ -18,6 +18,12 @@ export const articleReducers = (
         selectedArticle: action.payload
       };
     }
+    case EArticleActions.PostArticleSuccess: {
+      return {
+        ...state,
+        selectedArticle: action.payload
+      };
+    }
 
     default:
       return state;
