@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
+
+import { UserService } from '../../shared/service/user.service';
 
 @Component({
   selector: 'app-user-login-container',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(DOCUMENT) private _document: Document,
+    private _userService: UserService
+  ) { }
 
   ngOnInit() {
+  }
+
+  google() {
+    this._document.location.href = this._userService.getUrlAuthGoogle();
   }
 
 }
