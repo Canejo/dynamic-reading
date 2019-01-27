@@ -7,7 +7,9 @@ Aplicação ainda em desenvolvimento.
 Instalar [json-server](https://github.com/typicode/json-server).
 
 Criar arquivo para simular banco de dados: db.json.
+
 ### Exemplo de json:
+```json
 {
   "articles": [
     {
@@ -57,4 +59,4 @@ Criar arquivo para simular banco de dados: db.json.
     "speedRead": "300"
   }
 }
-
+```
