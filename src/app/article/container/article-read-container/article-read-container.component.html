@@ -4,6 +4,8 @@
   (pause)="pause($event)"
   (changeSpeed)="changeSpeed($event)"
   (back)="back()"
-  (archive)="archive()"
-  (favorite)="favorite()"
+  (archive)="onArchive($event)"
+  (remove)="onRemove($event)"
+  (tag)="onTag($event)"
+  (favorite)="onFavorite($event)"
 ></app-article-read>

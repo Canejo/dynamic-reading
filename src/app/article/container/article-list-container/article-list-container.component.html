@@ -2,5 +2,9 @@
 <app-article-list
   [articles]="articles$ | async"
   [config]="config$ | async"
-  (navigateToArticle)="navigateToArticle($event)">
+  (navigateToArticle)="navigateToArticle($event)"
+  (archive)="onArchive($event)"
+  (remove)="onRemove($event)"
+  (tag)="onTag($event)"
+  (favorite)="onFavorite($event)">
 </app-article-list>

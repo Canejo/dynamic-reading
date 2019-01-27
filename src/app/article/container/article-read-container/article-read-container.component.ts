@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 
 import { selectArticle } from '../../store/selectors/article.selector';
@@ -12,28 +11,29 @@ import { selectConfig } from './../../../core/store/selectors/config.selector';
 import { GetConfig, PostConfig } from './../../../core/store/actions/config.actions';
 import { ConfigEntity } from '../../../core/shared/entity/config.entity';
 import { ArticleEntity } from './../../shared/entity/article.entity';
+import { ArticleBaseContainerComponent } from '../article-base-container/article-base-container.component';
 
 @Component({
   selector: 'app-article-read-container',
   templateUrl: './article-read-container.component.html',
   styleUrls: ['./article-read-container.component.scss']
 })
-export class ArticleReadContainerComponent implements OnInit {
+export class ArticleReadContainerComponent extends ArticleBaseContainerComponent implements OnInit {
 
-  article$ = this._storeArticle.pipe(select(selectArticle));
+  article$ = this.storeArticle.pipe(select(selectArticle));
   config$ = this._storeApp.pipe(select(selectConfig));
 
   constructor(
-    private _storeArticle: Store<IArticleState>,
+    storeArticle: Store<IArticleState>,
     private _storeApp: Store<IAppState>,
     private _route: ActivatedRoute,
-    private _router: Router,
-    private _toastr: ToastrService,
     private _location: Location
-  ) { }
+  ) {
+    super(storeArticle);
+  }
 
   ngOnInit() {
-    this._storeArticle.dispatch(new GetArticle(this._route.snapshot.params.id));
+    this.storeArticle.dispatch(new GetArticle(this._route.snapshot.params.id));
     this._storeApp.dispatch(new GetConfig());
   }
 
@@ -51,12 +51,11 @@ export class ArticleReadContainerComponent implements OnInit {
     this._location.back();
   }
 
-  archive() {
-    this._toastr.success('Item arquivado');
+  posArchive(article: ArticleEntity): void {
     this.back();
   }
 
-  favorite() {
-
+  posRemove(article: ArticleEntity): void {
+    this.back();
   }
 }

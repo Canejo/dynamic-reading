@@ -13,22 +13,22 @@ import { ArticleBaseContainerComponent } from '../article-base-container/article
 
 export abstract class ArticleListBaseContainerComponent extends ArticleBaseContainerComponent implements OnInit {
 
-  articles$ = this._storeArticle.pipe(select(selectArticleList));
+  articles$ = this.storeArticle.pipe(select(selectArticleList));
   config$ = this._storeApp.pipe(select(selectConfig));
 
   abstract getFilter(): ArticleEntity;
 
   constructor(
-    private _storeArticle: Store<IArticleState>,
+    storeArticle: Store<IArticleState>,
     private _storeApp: Store<IAppState>,
     private _router: Router
   ) {
-    super();
+    super(storeArticle);
   }
 
   ngOnInit() {
     const filter = this.getFilter();
-    this._storeArticle.dispatch(new GetArticles(filter));
+    this.storeArticle.dispatch(new GetArticles(filter));
     this._storeApp.dispatch(new GetConfig());
   }
 
@@ -36,4 +36,11 @@ export abstract class ArticleListBaseContainerComponent extends ArticleBaseConta
     this._router.navigate(['/article/read', article.id]);
   }
 
+  posArchive(article: ArticleEntity): void {
+
+  }
+
+  posRemove(article: ArticleEntity): void {
+
+  }
 }
