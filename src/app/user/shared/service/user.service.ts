@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UserEntity } from '../entity/user.entity';
-import { Observable } from 'rxjs';
-
+import { Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { environment } from '../../../../environments/environment';
+import { UserEntity } from '../entity/user.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class UserService {
   constructor() { }
 
   getUrlAuthGoogle(): string {
-    return 'https://localhost:44349' + '/AccountGoogle/signInWithGoogle';
+    return `${environment.apiUrl}/AccountGoogle/signInWithGoogle`;
   }
 
   logIn(payload: UserEntity): Observable<UserEntity> {
-    throw new Error("Method not implemented.");
+    return of(payload);
   }
 
   tokenToUserEntity(tokenValue: string) {

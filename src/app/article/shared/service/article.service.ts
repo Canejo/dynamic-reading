@@ -23,15 +23,15 @@ export class ArticleService {
       }
     }
 
-    return this._http.get<ArticleEntity[]>(`${environment.apiUrl}/articles`, {params: params});
+    return this._http.get<ArticleEntity[]>(`${environment.apiUrl}/api/v1/articles`, {params: params});
   }
 
   getArticle(id: number): Observable<ArticleEntity> {
-    return this._http.get<ArticleEntity>(`${environment.apiUrl}/articles/${id}`);
+    return this._http.get<ArticleEntity>(`${environment.apiUrl}/api/v1/articles/${id}`);
   }
 
   postArticle(articleEntity: ArticleEntity): Observable<ArticleEntity> {
     console.log('a');
-    return this._http.post<ArticleEntity>(`${environment.apiUrl}/articles/${articleEntity.id}`, articleEntity);
+    return this._http.post<ArticleEntity>(`${environment.apiUrl}/api/v1/articles/${articleEntity.id}`, articleEntity);
   }
 }
