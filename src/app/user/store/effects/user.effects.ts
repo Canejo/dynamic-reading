@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 
 import { LogIn, LogInSuccess, LogOut, LogInSuccessAndRedirect } from '../actions/user.actions';
 import { UserService } from '../../shared/service/user.service';
 import { EUserActions } from '../actions/user.actions';
+import { IUserState } from '../state/user.state';
 
 
 @Injectable()
@@ -30,7 +32,7 @@ export class UserEffects {
   @Effect({ dispatch: false })
   logInSuccessAndRedirect$ = this._actions$.pipe(
     ofType<LogInSuccessAndRedirect>(EUserActions.LoginSuccessAndRedirect),
-    switchMap((user) => of(new LogInSuccess(user.payload))),
+    tap(user => this._store.dispatch(new LogInSuccess(user.payload))),
     map(() => {
       this.router.navigateByUrl('/article');
     })
@@ -46,6 +48,7 @@ export class UserEffects {
     private _userService: UserService,
     private _actions$: Actions,
     private _localStorage: LocalStorage,
-    private router: Router
+    private router: Router,
+    private _store: Store<IUserState>
   ) {}
 }
