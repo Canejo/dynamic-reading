@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './component/header/header.component';
 import { RouterModule } from '@angular/router';
+
+import { HeaderComponent } from './component/header/header.component';
+import { HomeContainerComponent } from './container/home-container/home-container.component';
+import { HomeComponent } from './component/home/home.component';
+import { HeaderContainerComponent } from './container/header-container/header-container.component';
 
 @NgModule({
   imports: [
@@ -9,10 +13,13 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    HomeContainerComponent,
+    HomeComponent,
+    HeaderContainerComponent
   ],
   exports: [
-    HeaderComponent
+    HeaderContainerComponent
   ]
 })
 export class LayoutModule { }
