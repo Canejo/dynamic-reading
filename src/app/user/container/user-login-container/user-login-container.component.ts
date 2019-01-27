@@ -18,7 +18,7 @@ export class UserLoginContainerComponent implements OnInit {
   ngOnInit() {
   }
 
-  google() {
+  onGoogle() {
     this._document.location.href = this._userService.getUrlAuthGoogle();
   }
 
