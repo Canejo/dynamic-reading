@@ -6,6 +6,7 @@ import { IArticleState } from '../../store/state/article.state';
 import { ArticleEntity } from '../../shared/entity/article.entity';
 import { IAppState } from '../../../store/state/app.state';
 import { ArticleListBaseContainerComponent } from '../article-list-base-container/article-list-base-container.component';
+import { ModalContentService } from './../../../layout/component/modal-content/service/modal-content.service';
 
 @Component({
   selector: 'app-article-archive-container',
@@ -16,10 +17,11 @@ export class ArticleArchiveContainerComponent extends ArticleListBaseContainerCo
 
   constructor(
     storeArticle: Store<IArticleState>,
+    modalContentService: ModalContentService,
     storeApp: Store<IAppState>,
     router: Router
   ) {
-    super(storeArticle, storeApp, router);
+    super(storeArticle, modalContentService, storeApp, router);
   }
 
   getFilter(): ArticleEntity {

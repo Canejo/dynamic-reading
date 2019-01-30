@@ -1,0 +1,6 @@
+<button type="button" [id]="id" [class]="class" (click)="onClick()" [disabled]="processando || concluido || falha" [class.btn-primary]="!concluido && !falha" [class.btn-success]="concluido" [class.btn-danger]="falha">
+  <ng-container *ngIf="!processando && !concluido && !falha"><ng-content></ng-content></ng-container>
+  <ng-container *ngIf="processando"><i class="fas fa-spinner fa-spin fa-1x mr-3" ></i>Processando</ng-container>
+  <ng-container *ngIf="concluido"><i class="fas fa-check mr-3"></i>Concluído</ng-container>
+  <ng-container *ngIf="falha"><i class="fas fa-times mr-3"></i>Falha</ng-container>
+</button>
