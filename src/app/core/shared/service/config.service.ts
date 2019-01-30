@@ -14,10 +14,10 @@ export class ConfigService {
   ) { }
 
   getConfig(): Observable<ConfigEntity> {
-    return this._http.get<ConfigEntity>(`${environment.apiUrl}/config`);
+    return this._http.get<ConfigEntity>(`${environment.apiUrl}/api/v1/config`);
   }
 
   postConfig(configEntity: ConfigEntity): Observable<ConfigEntity> {
-    return this._http.post<ConfigEntity>(`${environment.apiUrl}/config`, configEntity);
+    return this._http.post<ConfigEntity>(`${environment.apiUrl}/api/v1/config`, configEntity);
   }
 }

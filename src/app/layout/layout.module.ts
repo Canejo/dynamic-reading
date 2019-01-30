@@ -1,18 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './component/header/header.component';
 import { RouterModule } from '@angular/router';
+
+import { HeaderComponent } from './component/header/header.component';
+import { HomeContainerComponent } from './container/home-container/home-container.component';
+import { HomeComponent } from './component/home/home.component';
+import { HeaderContainerComponent } from './container/header-container/header-container.component';
+import { ButtonLoadingComponent } from './component/button-loading/button-loading.component';
+import { ModalContentModule } from './component/modal-content/modal-content.module';
+import { ButtonLoadingService } from './component/button-loading/service/button-loading.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ModalContentModule
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    HomeContainerComponent,
+    HomeComponent,
+    HeaderContainerComponent,
+    ButtonLoadingComponent
+  ],
+  providers: [
+    ButtonLoadingService
   ],
   exports: [
-    HeaderComponent
+    HeaderContainerComponent,
+    ButtonLoadingComponent,
+    ModalContentModule
   ]
 })
 export class LayoutModule { }

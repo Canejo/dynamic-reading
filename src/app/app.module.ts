@@ -16,6 +16,7 @@ import { environment } from './../environments/environment.prod';
 import { appReducers } from './store/reducers/app.reducers';
 import { ConfigEffects } from './core/store/effects/config.effects';
 import { LayoutModule } from './layout/layout.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { LayoutModule } from './layout/layout.module';
       preventDuplicates: true
     }),
     NgbModule.forRoot(),
-    LayoutModule
+    LayoutModule,
+    UserModule
   ],
   declarations: [
     AppComponent

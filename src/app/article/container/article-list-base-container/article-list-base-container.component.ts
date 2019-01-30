@@ -10,6 +10,7 @@ import { selectConfig } from './../../../core/store/selectors/config.selector';
 import { IAppState } from '../../../store/state/app.state';
 import { GetConfig } from './../../../core/store/actions/config.actions';
 import { ArticleBaseContainerComponent } from '../article-base-container/article-base-container.component';
+import { ModalContentService } from './../../../layout/component/modal-content/service/modal-content.service';
 
 export abstract class ArticleListBaseContainerComponent extends ArticleBaseContainerComponent implements OnInit {
 
@@ -20,10 +21,11 @@ export abstract class ArticleListBaseContainerComponent extends ArticleBaseConta
 
   constructor(
     storeArticle: Store<IArticleState>,
+    modalContentService: ModalContentService,
     private _storeApp: Store<IAppState>,
     private _router: Router
   ) {
-    super(storeArticle);
+    super(storeArticle, modalContentService);
   }
 
   ngOnInit() {

@@ -12,6 +12,7 @@ import { GetConfig, PostConfig } from './../../../core/store/actions/config.acti
 import { ConfigEntity } from '../../../core/shared/entity/config.entity';
 import { ArticleEntity } from './../../shared/entity/article.entity';
 import { ArticleBaseContainerComponent } from '../article-base-container/article-base-container.component';
+import { ModalContentService } from './../../../layout/component/modal-content/service/modal-content.service';
 
 @Component({
   selector: 'app-article-read-container',
@@ -25,11 +26,12 @@ export class ArticleReadContainerComponent extends ArticleBaseContainerComponent
 
   constructor(
     storeArticle: Store<IArticleState>,
+    modalContentService: ModalContentService,
     private _storeApp: Store<IAppState>,
     private _route: ActivatedRoute,
     private _location: Location
   ) {
-    super(storeArticle);
+    super(storeArticle, modalContentService);
   }
 
   ngOnInit() {

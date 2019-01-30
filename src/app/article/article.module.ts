@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TagInputModule } from 'ngx-chips';
 
 import { ReadRunnerComponent } from './shared/widget/read-runner/read-runner.component';
 import { ArticleRoutingModule } from './article-routing.module';
@@ -19,6 +20,9 @@ import { ArticleContainerComponent } from './container/article-container/article
 import { ArticleFavoriteContainerComponent } from './container/article-favorite-container/article-favorite-container.component';
 import { ArticleArchiveContainerComponent } from './container/article-archive-container/article-archive-container.component';
 import { ArticleOptionsComponent } from './component/article-options/article-options.component';
+import { ArticleTagModalComponent } from './container/article-tag-modal/article-tag-modal.component';
+import { ArticleTagComponent } from './component/article-tag/article-tag.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -27,7 +31,10 @@ import { ArticleOptionsComponent } from './component/article-options/article-opt
     StoreModule.forFeature('article', articleReducers),
     EffectsModule.forFeature([ArticleEffects]),
     NgbModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagInputModule
   ],
   declarations: [
     ReadRunnerComponent,
@@ -39,7 +46,12 @@ import { ArticleOptionsComponent } from './component/article-options/article-opt
     ArticleContainerComponent,
     ArticleFavoriteContainerComponent,
     ArticleArchiveContainerComponent,
-    ArticleOptionsComponent
+    ArticleOptionsComponent,
+    ArticleTagModalComponent,
+    ArticleTagComponent
+  ],
+  entryComponents: [
+    ArticleTagModalComponent
   ],
   exports: [
   ],
