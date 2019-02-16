@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
 
 import { ArticleEntity } from '../entity/article.entity';
 import { environment } from '../../../../environments/environment';
@@ -10,10 +12,24 @@ import { environment } from '../../../../environments/environment';
 })
 export class ArticleService {
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private apollo: Apollo
   ) { }
 
   getArticles(filter: ArticleEntity): Observable<ArticleEntity[]> {
+    this.apollo
+      .watchQuery({
+        query: gql`
+          {
+            rates(currency: "USD") {
+              currency
+              rate
+            }
+          }
+        `,
+      })
+      .valueChanges.subscribe(result => {
+      });
     let params = new HttpParams();
     if (filter) {
       for (const i in filter) {

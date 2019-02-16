@@ -17,6 +17,7 @@ import { appReducers } from './store/reducers/app.reducers';
 import { ConfigEffects } from './core/store/effects/config.effects';
 import { LayoutModule } from './layout/layout.module';
 import { UserModule } from './user/user.module';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { UserModule } from './user/user.module';
     }),
     NgbModule.forRoot(),
     LayoutModule,
-    UserModule
+    UserModule,
+    GraphQLModule
   ],
   declarations: [
     AppComponent
