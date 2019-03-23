@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonLoadingComponent } from './button-loading.component';
-import { UiCommonModule } from '../../ui-common.module';
+import { LayoutModule } from '../../layout.module';
 
 describe('ButtonLoadingComponent', () => {
   let component: ButtonLoadingComponent;
@@ -9,7 +9,7 @@ describe('ButtonLoadingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ UiCommonModule ]
+      imports: [ LayoutModule ]
     })
     .compileComponents();
   }));

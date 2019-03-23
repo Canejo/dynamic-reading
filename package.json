@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release": "standard-version && git push --follow-tags origin master"
+    "release": "standard-version && git push --follow-tags origin master",
+    "build:ci": "npm run build:prod",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "ci": "npm run test:ci && npm run build:ci"
   },
   "private": true,
   "dependencies": {
