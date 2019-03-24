@@ -1,6 +1,8 @@
+import { AppModule } from './../../../app.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IntegrationPocketComponent } from './integration-pocket.component';
+import { UserModule } from '../../user.module';
 
 describe('IntegrationPocketComponent', () => {
   let component: IntegrationPocketComponent;
@@ -8,7 +10,10 @@ describe('IntegrationPocketComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IntegrationPocketComponent ]
+      imports: [
+        AppModule,
+        UserModule
+      ]
     })
     .compileComponents();
   }));

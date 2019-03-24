@@ -1,17 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
-import { AppModule } from './../../../app.module';
+import { FooterContainerComponent } from './footer-container.component';
 import { LayoutModule } from '../../layout.module';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('FooterContainerComponent', () => {
+  let component: FooterContainerComponent;
+  let fixture: ComponentFixture<FooterContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        AppModule,
         LayoutModule
       ]
     })
@@ -19,7 +17,7 @@ describe('HeaderComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(FooterContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

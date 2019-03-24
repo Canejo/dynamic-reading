@@ -1,9 +1,18 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
 import { ArticleTextService } from './article-text.service';
+import { AppModule } from './../../../app.module';
+import { ArticleModule } from '../../article.module';
 
 describe('ArticleTextService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        AppModule,
+        ArticleModule
+      ]
+    });
+  }));
 
   it('should be created', () => {
     const service: ArticleTextService = TestBed.get(ArticleTextService);

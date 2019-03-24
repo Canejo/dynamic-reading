@@ -4,18 +4,20 @@ import { switchMap, withLatestFrom, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 
-import { EConfigActions, GetConfig, GetConfigSuccess, PostConfig, PostConfigSuccess } from '../actions/config.actions';
+import { ECoreActions, GetConfig, GetConfigSuccess, PostConfig, PostConfigSuccess,
+  GetSystemConfig, GetSystemConfigSuccess } from '../actions/core.actions';
 import { ConfigEntity } from '../../shared/entity/config.entity';
 import { ConfigService } from '../../shared/service/config.service';
-import { IAppState } from './../../../store/state/app.state';
-import { selectConfig } from '../selectors/config.selector';
+import { selectConfig, selectSystemConfig } from '../selectors/core.selector';
+import { ISystemConfig } from '../../shared/entity/system-config.entity';
+import { ICoreState } from '../state/core.state';
 
 
 @Injectable()
-export class ConfigEffects {
+export class CoreEffects {
   @Effect()
   getConfig$ = this._actions$.pipe(
-    ofType<GetConfig>(EConfigActions.GetConfig),
+    ofType<GetConfig>(ECoreActions.GetConfig),
     withLatestFrom(
       this._store.select(selectConfig),
       (action: any, store: any) => store
@@ -32,15 +34,31 @@ export class ConfigEffects {
 
   @Effect()
   postConfig$ = this._actions$.pipe(
-    ofType<PostConfig>(EConfigActions.PostConfig),
+    ofType<PostConfig>(ECoreActions.PostConfig),
     map(action => action.payload),
     switchMap((configEntity) => this._configService.postConfig(configEntity)),
     switchMap((config: ConfigEntity) => of(new PostConfigSuccess(config)))
   );
 
+  @Effect()
+  getSystemConfig$ = this._actions$.pipe(
+    ofType<GetSystemConfig>(ECoreActions.GetSystemConfig),
+    withLatestFrom(
+      this._store.select(selectSystemConfig),
+      (action: any, store: any) => store
+    ),
+    switchMap((config): any => {
+      if (config) {
+        return of(config);
+      }
+      return this._configService.getSystemConfig();
+     }),
+    switchMap((config: ISystemConfig) => of(new GetSystemConfigSuccess(config)))
+  );
+
   constructor(
-    private _configService: ConfigService,
+    private _store: Store<ICoreState>,
     private _actions$: Actions,
-    private _store: Store<IAppState>
+    private _configService: ConfigService
     ) {}
 }

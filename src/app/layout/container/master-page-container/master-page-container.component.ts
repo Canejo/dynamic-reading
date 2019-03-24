@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+
+import { selectSystemConfig } from './../../../core/store/selectors/core.selector';
+import { GetSystemConfig } from './../../../core/store/actions/core.actions';
+import { ICoreState } from './../../../core/store/state/core.state';
 
 @Component({
   selector: 'app-master-page-container',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterPageContainerComponent implements OnInit {
 
-  constructor() { }
+  systemConfig$ = this.storeCore.pipe(select(selectSystemConfig));
+
+  constructor(
+    private storeCore: Store<ICoreState>
+  ) { }
 
   ngOnInit() {
+    this.storeCore.dispatch(new GetSystemConfig());
   }
 
 }

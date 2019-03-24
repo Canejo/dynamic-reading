@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { configReducers } from './store/reducers/config.reducers';
-import { ConfigEffects } from './store/effects/config.effects';
+import { coreReducers } from './store/reducers/core.reducers';
+import { CoreEffects } from './store/effects/core.effects';
 import { ConfigService } from './shared/service/config.service';
 import { SystemGraphql } from './shared/graphql/query/system.graphql';
 
@@ -12,8 +12,8 @@ import { SystemGraphql } from './shared/graphql/query/system.graphql';
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('core', configReducers),
-    EffectsModule.forFeature([ConfigEffects]),
+    StoreModule.forFeature('core', coreReducers),
+    EffectsModule.forFeature([CoreEffects]),
   ],
   declarations: [],
   providers: [

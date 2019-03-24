@@ -12,21 +12,19 @@ import { IUserState } from './user/store/state/user.state';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
   constructor(
-    private _localStorage: LocalStorage,
-    private _userService: UserService,
-    private _storeUser: Store<IUserState>
+    private localStorage: LocalStorage,
+    private userService: UserService,
+    private storeUser: Store<IUserState>
   ) {
   }
 
   ngOnInit() {
-    this._localStorage.getItem('token').subscribe((tokenValue: string) => {
+    this.localStorage.getItem('token').subscribe((tokenValue: string) => {
       if (tokenValue) {
-        const userEntity = this._userService.tokenToUserEntity(tokenValue);
-        this._storeUser.dispatch(new LogInSuccess(userEntity));
+        const userEntity = this.userService.tokenToUserEntity(tokenValue);
+        this.storeUser.dispatch(new LogInSuccess(userEntity));
       }
     });
-
   }
 }

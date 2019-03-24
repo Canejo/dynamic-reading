@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AppModule } from './../../../../app.module';
+import { ArticleModule } from './../../../article.module';
 import { ReadRunnerComponent } from './read-runner.component';
 
 describe('ReadRunnerComponent', () => {
@@ -8,7 +10,10 @@ describe('ReadRunnerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReadRunnerComponent ]
+      imports: [
+        AppModule,
+        ArticleModule
+      ],
     })
     .compileComponents();
   }));

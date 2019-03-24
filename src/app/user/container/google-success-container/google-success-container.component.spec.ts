@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoogleSuccessContainerComponent } from './google-success-container.component';
+import { AppModule } from './../../../app.module';
+import { UserModule } from '../../user.module';
 
 describe('GoogleSuccessContainerComponent', () => {
   let component: GoogleSuccessContainerComponent;
@@ -8,7 +10,10 @@ describe('GoogleSuccessContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoogleSuccessContainerComponent ]
+      imports: [
+        AppModule,
+        UserModule
+      ]
     })
     .compileComponents();
   }));

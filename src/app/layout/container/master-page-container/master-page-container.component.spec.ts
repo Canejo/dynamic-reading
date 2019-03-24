@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MasterPageContainerComponent } from './master-page-container.component';
+import { AppModule } from './../../../app.module';
+import { LayoutModule } from '../../layout.module';
 
 describe('MasterPageContainerComponent', () => {
   let component: MasterPageContainerComponent;
@@ -8,7 +10,10 @@ describe('MasterPageContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MasterPageContainerComponent ]
+      imports: [
+        AppModule,
+        LayoutModule
+      ]
     })
     .compileComponents();
   }));
