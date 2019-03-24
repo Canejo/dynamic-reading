@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -18,6 +18,7 @@ import { IntegrationPocketComponent } from './component/integration-pocket/integ
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     UserRoutingModule,
     StoreModule.forFeature('user', userReducers),
     EffectsModule.forFeature([UserEffects]),

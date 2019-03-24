@@ -1,5 +1,9 @@
 <div *ngIf="systemConfig && systemConfig.pocketKey">
-  <button>Integration pocket</button>
+  <form #form action="https://getpocket.com/v3/oauth/request" method="post">
+      <input type="hidden" name="consumer_key" value="{{systemConfig.pocketKey}}">
+      <input type="hidden" name="redirect_uri" value="http://localhost:4200/user/return/pocket">
+      <button type="submit" (click)="form.submit();">Integration pocket</button>
+  </form>
 </div>
 
 <!-- https://www.codeproject.com/Articles/639057/Creating-a-service-for-storing-your-Pocket-article -->
