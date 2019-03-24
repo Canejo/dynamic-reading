@@ -1,18 +1,15 @@
-<app-header-container></app-header-container>
-<section class="main-container">
-  <div class="container">
-      <div class="row">
-        <div class="col-2">
-          <nav class="nav flex-column">
-            <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/list">Minha lista</a>
-            <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/favorites">Favoritos</a>
-            <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/archive">Arquivo</a>
-          </nav>
-        </div>
-        <div class="col">
-            <router-outlet></router-outlet>
-        </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-2">
+        <nav class="nav flex-column">
+          <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/list">Minha lista</a>
+          <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/favorites">Favoritos</a>
+          <a class="nav-link" routerLinkActive="text-muted" routerLink="/article/archive">Arquivo</a>
+        </nav>
+      </div>
+      <div class="col">
+          <router-outlet></router-outlet>
       </div>
     </div>
-</section>
-<app-modal-content></app-modal-content>
+</div>

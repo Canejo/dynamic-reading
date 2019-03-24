@@ -9,6 +9,7 @@ import { HeaderContainerComponent } from './container/header-container/header-co
 import { ButtonLoadingComponent } from './component/button-loading/button-loading.component';
 import { ModalContentModule } from './component/modal-content/modal-content.module';
 import { ButtonLoadingService } from './component/button-loading/service/button-loading.service';
+import { MasterPageContainerComponent } from './container/master-page-container/master-page-container.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ButtonLoadingService } from './component/button-loading/service/button-
     HomeContainerComponent,
     HomeComponent,
     HeaderContainerComponent,
-    ButtonLoadingComponent
+    ButtonLoadingComponent,
+    MasterPageContainerComponent
   ],
   providers: [
     ButtonLoadingService

@@ -1,23 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { ConfigEntity } from '../entity/config.entity';
 import { environment } from './../../../../environments/environment';
+import { ISystemConfig } from '../entity/system-config.entity';
+import { SystemGraphql } from '../graphql/query/system.graphql';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ConfigService {
   constructor(
-    private _http: HttpClient
+    private http: HttpClient,
+    private systemGraphql: SystemGraphql
   ) { }
 
   getConfig(): Observable<ConfigEntity> {
-    return this._http.get<ConfigEntity>(`${environment.apiUrl}/api/v1/config`);
+    return this.http.get<ConfigEntity>(`${environment.apiUrl}/api/v1/config`);
   }
 
   postConfig(configEntity: ConfigEntity): Observable<ConfigEntity> {
-    return this._http.post<ConfigEntity>(`${environment.apiUrl}/api/v1/config`, configEntity);
+    return this.http.post<ConfigEntity>(`${environment.apiUrl}/api/v1/config`, configEntity);
+  }
+
+  getSystemConfig(): Observable<ISystemConfig> {
+    return this.systemGraphql
+        .watch().valueChanges.pipe(
+          map((result: any) => result.data.system as ISystemConfig)
+        );
   }
 }

@@ -11,6 +11,8 @@ import { UserLoginComponent } from './component/user-login/user-login.component'
 import { GoogleSuccessContainerComponent } from './container/google-success-container/google-success-container.component';
 import { userReducers } from './store/reducers/user.reducers';
 import { UserEffects } from './store/effects/user.effects';
+import { UserManagerContainerComponent } from './container/user-manager-container/user-manager-container.component';
+import { IntegrationPocketComponent } from './component/integration-pocket/integration-pocket.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { UserEffects } from './store/effects/user.effects';
   declarations: [
     UserLoginContainerComponent,
     UserLoginComponent,
-    GoogleSuccessContainerComponent
+    GoogleSuccessContainerComponent,
+    UserManagerContainerComponent,
+    IntegrationPocketComponent
   ]
 })
 export class UserModule { }

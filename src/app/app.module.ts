@@ -14,10 +14,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from './../environments/environment.prod';
 import { appReducers } from './store/reducers/app.reducers';
-import { ConfigEffects } from './core/store/effects/config.effects';
 import { LayoutModule } from './layout/layout.module';
 import { UserModule } from './user/user.module';
 import { GraphQLModule } from './graphql.module';
+
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import { GraphQLModule } from './graphql.module';
     MomentModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([ConfigEffects]),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule,
@@ -34,15 +35,17 @@ import { GraphQLModule } from './graphql.module';
       positionClass: 'toast-top-center',
       preventDuplicates: true
     }),
-    NgbModule.forRoot(),
+    NgbModule,
     LayoutModule,
+    CoreModule,
     UserModule,
     GraphQLModule
   ],
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

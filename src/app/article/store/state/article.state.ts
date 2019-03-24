@@ -1,5 +1,4 @@
 import { ArticleEntity } from '../../shared/entity/article.entity';
-import { IAppState } from 'src/app/store/state/app.state';
 
 export interface IArticleState {
   articles: ArticleEntity[];
