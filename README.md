@@ -1,62 +1,27 @@
 # DynamicReading
 
-Aplicação ainda em desenvolvimento.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
 
-## Debug app
+## Development server
 
-Instalar [json-server](https://github.com/typicode/json-server).
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Criar arquivo para simular banco de dados: db.json.
+## Code scaffolding
 
-### Exemplo de json:
-```json
-{
-  "articles": [
-    {
-      "id": 1,
-      "title": "5 projects for Raspberry Pi at home",
-      "url": "https://opensource.com/article/17/4/5-projects-raspberry-pi-home",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum pretium urna, sit amet elementum nisi. Fusce scelerisque, quam sit amet ornare mollis, justo augue pretium metus, eget molestie justo lectus nec quam. Sed feugiat lacus et nibh maximus, quis eleifend nunc lobortis. Pellentesque non risus vel orci suscipit consequat. Integer et tincidunt sem, ut cursus risus. ",
-      "index": 0,
-      "favorite": true,
-      "archive": false,
-      "tags": [
-        {
-          "name": "lorem"
-        },
-        {
-          "name": "ipsum"
-        }
-      ],
-      "source": {
-        "id": 1,
-        "name": "Pocket"
-      }
-    },
-    {
-      "id": 2,
-      "title": "HowTo: Set-Up the Raspberry Pi as a Headless Device",
-      "favorite": false,
-      "archive": false,
-      "url": "http://jeffskinnerbox.me/posts/2016/Apr/27/howto-set-up-the-raspberry-pi-as-a-headless-device/",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum pretium urna, sit amet elementum nisi.",
-      "index": 0,
-      "tags": [
-        {
-          "name": "article"
-        },
-        {
-          "name": "teste"
-        }
-      ],
-      "source": {
-        "id": 2,
-        "name": "Evernote"
-      }
-    }
-  ],
-  "config": {
-    "speedRead": "300"
-  }
-}
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
